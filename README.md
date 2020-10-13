@@ -1,24 +1,13 @@
-# nan
+# not a number
+こちらは、駆け出しエンジニアいりふねの自己紹介ページです。
 
-## Project setup
+## 開発環境
 ```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
+Vue2
+VS code
 ```
 
-### Compiles and minifies for production
+## 開発経緯
 ```
-npm run build
+Vue.jsの学習のためにイチから作ってみました。
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
