@@ -2,10 +2,10 @@
   <div class="home">
     <div class="title__contents__left" v-html="title"></div>
     <div class="title__contents__right">
-      <div class="title__contents__right--megane" id="megane" ><img src="../assets/img/megane.png" usemap="#megane_map" :load="load"></div>
+      <div class="title__contents__right--megane"><img src="../assets/img/megane.png" id="megane" usemap="#megane_map"></div>
       <map name="megane_map">
-        <area shape="rect" coords="" @click="oops=!oops" v-if="true">
-        <area shape="rect" coords="" @click="omg=!omg">
+        <area shape="rect" :coords="coords1" @click="oops=!oops">
+        <area shape="rect" :coords="coords2" @click="omg=!omg">
       </map>
       <img src="../assets/img/oops.png" class="title__contents__right--oops" v-if="oops">
       <img src="../assets/img/omg.png" class="title__contents__right--omg" v-if="omg"> 
@@ -20,15 +20,21 @@ export default {
     return {
       dark: true,
       title: "not<br>a<br>number",
-      url: "../assets/img/megane.png",
+      coords1: '',
+      coords2: '',
       oops: false,
       omg: false
     }
   },
-  methods: {
-    load: function() {
-      console.log("完了");
-    }
+  mounted: function() {
+    this.$nextTick(function () {
+      const img = document.getElementById("megane");
+      var w = img.clientWidth;
+      var h = img.clientHeight;
+      var h_w = Math.round(w / 2);
+      this.coords1 = `${h_w}, 0, ${w}, ${h}`;
+      this.coords2 = `0,0,${h_w},${h}`;
+    })
   }
 }
 </script>

@@ -114,7 +114,7 @@ header {
 }
 
 .home {
-  height: 86vh;
+  height: 79.9vh;
   margin-top: 6vw;
   display: flex;
   justify-content: space-between;
@@ -148,7 +148,11 @@ header {
   max-width: 155px;
   max-height: 115px;
   margin: 18vw 12vw 0 0;
+}
 
+#megane {
+  width: 10vw;
+  height: 3vw;
 }
 
 .title__contents__right--megane img {
