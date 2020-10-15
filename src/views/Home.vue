@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <section class="home">
     <div class="title__contents__left" v-html="title"></div>
     <div class="title__contents__right">
       <div class="title__contents__right--megane"><img src="../assets/img/megane.png" id="megane" usemap="#megane_map"></div>
@@ -10,7 +10,7 @@
       <img src="../assets/img/oops.png" class="title__contents__right--oops" v-if="oops">
       <img src="../assets/img/omg.png" class="title__contents__right--omg" v-if="omg"> 
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -29,9 +29,9 @@ export default {
   mounted: function() {
     this.$nextTick(function () {
       const img = document.getElementById("megane");
-      var w = img.clientWidth;
-      var h = img.clientHeight;
-      var h_w = Math.round(w / 2);
+      let w = img.clientWidth;
+      let h = img.clientHeight;
+      let h_w = Math.round(w / 2);
       this.coords1 = `${h_w}, 0, ${w}, ${h}`;
       this.coords2 = `0,0,${h_w},${h}`;
     })
