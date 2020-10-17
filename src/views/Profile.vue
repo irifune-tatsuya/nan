@@ -1,5 +1,6 @@
 <template>
   <section id="profile">
+    <Header></Header>
     <h1 class="title">profile</h1>
     <div class="profile__contents">
       <ul class="profile__contents__list">
@@ -20,11 +21,19 @@
         </li>
       </ul>
     </div>
+    <Footer></Footer>
   </section>
 </template>
 <script>
+import Header from "@/components/Header.vue"
+import Footer from "@/components/Footer.vue"
+
 export default {
   name: 'Profile',
+  components: {
+    Header,
+    Footer
+  },
   data: function() {
     return {
       upperProfiles: [

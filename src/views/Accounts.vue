@@ -1,6 +1,6 @@
 <template>
   <section id="accounts">
-    <LoadExternalJS :url="some_url"></LoadExternalJS>
+    <Header></Header>
     <h1 class="title">accounts</h1>
     <div class="accounts__contents">
       <a class="twitter-timeline" data-lang="ja" data-width="50vw" data-height="35vw" data-theme="dark" href="https://twitter.com/iczo32">Tweets by TwitterDev</a>
@@ -14,20 +14,18 @@
         </div>
       </div>
     </div>
+    <Footer></Footer>
   </section>
 </template>
 <script>
-import LoadExternalJS from "@/components/LoadExternalJS.vue"
+import Header from "@/components/Header.vue"
+import Footer from "@/components/Footer.vue"
 
 export default {
   name: 'Accounts',
   components: {
-    LoadExternalJS
-  },
-  data(){
-    return {
-      some_url: 'https://platform.twitter.com/widgets.js'
-    }
+    Header,
+    Footer
   }
 }
 </script>
