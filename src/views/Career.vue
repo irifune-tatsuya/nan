@@ -1,5 +1,6 @@
 <template>
   <section id="career">
+    <Header></Header>
     <h1 class="title">carrer</h1>
     <div class="career__contents">
       <div v-for="data in modalDatas" :key="data.id">
@@ -19,11 +20,19 @@
         </div>
       </div>
     </transition>
+    <Footer></Footer>
   </section>
 </template>
 <script>
+import Header from "@/components/Header.vue"
+import Footer from "@/components/Footer.vue"
+
 export default {
   name: 'Profile',
+  components: {
+    Header,
+    Footer
+  },
   data: function() {
     return {
       modalDatas: [
