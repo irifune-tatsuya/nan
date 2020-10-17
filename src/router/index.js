@@ -26,9 +26,9 @@ const routes = [
     component: () => import('../views/Accounts.vue')
   },
   {
-    path: '/commentary',
-    name: 'commentary',
-    component: () => import('../views/Commentary.vue')
+    path: '/bbs',
+    name: 'bbs',
+    component: () => import('../views/Bbs.vue')
   },
   {
     path: '/demo',

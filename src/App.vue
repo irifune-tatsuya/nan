@@ -12,7 +12,7 @@
           <div class="header__up__nav__link"><router-link to="/profile">profile</router-link></div>
           <div class="header__up__nav__link"><router-link to="/career">career</router-link></div>
           <div class="header__up__nav__link"><router-link to="/accounts">accounts</router-link></div>
-          <div class="header__up__nav__link"><router-link to="/commentary">commentary</router-link></div>
+          <div class="header__up__nav__link"><router-link to="/bbs">BBS</router-link></div>
           <div class="header__up__nav__link"><router-link to="/demo">demo</router-link></div>
         </nav>
       </div>
