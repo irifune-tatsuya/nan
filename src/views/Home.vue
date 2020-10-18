@@ -29,7 +29,6 @@ export default {
   },
   data: function() {
     return {
-      dark: true,
       title: "not<br>a<br>number",
       coords1: '',
       coords2: '',
