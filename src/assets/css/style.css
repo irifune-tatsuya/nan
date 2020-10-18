@@ -200,7 +200,7 @@ header {
   right: 22vw;
 }
 
-#profile {
+.profile {
   position: relative;
 }
 
@@ -350,22 +350,31 @@ header {
   cursor: pointer;
 }
 
-#career {
+.career {
   position: relative;
+  height: 84.5vh;
+  margin-top: 5vw;
 }
 
 .career__contents {
-  height: 84.5vh;
-  margin-top: 5vw;
-  padding: 10vw 10vw 0;
+  height: 33vw;
+  width: 80vw;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  padding-top: 3vw;
   display: flex;
   justify-content: center;
+  align-content: flex-start;
   flex-wrap: wrap;
 }
 
 .career__contents--trump {
   height: 15vw;
-  margin: 0 1.5vw;
+  margin: 0 1.5vw 1.5vw;
   cursor: pointer;
 }
 
@@ -408,7 +417,7 @@ header {
   max-width: 400px;
   height: 85vh;
   max-height: 700px;
-  border-radius: 3vw;
+  border-radius: 1vw;
   padding: 2vw;
   background-color: #fff;
   text-align: center;
@@ -452,14 +461,22 @@ header {
   transform: translateY(-0.3vw);
 }
 
-#accounts {
+.accounts {
   position: relative;
+  height: 84.5vh;
+  margin-top: 5vw;
 }
 
 .accounts__contents {
-  height: 84.5vh;
-  margin-top: 5vw;
-  padding-top: 10vw;
+  height: 30vw;
+  width: 67vw;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  padding-top: 2vw;
   display: flex;
   justify-content: center;
 }
@@ -468,7 +485,6 @@ header {
   height: 30vw;
   color: #fff;
   margin-left: 8vw;
-  position: relative;
 }
 
 .accounts__contents__list span {
@@ -555,11 +571,11 @@ footer {
 
 @media (prefers-color-scheme: dark) {
   body {
-    background-color: #7f7f7f;
+    background-color: #222;
     color: #fff;
   }
   .header__up {
-    background-color: #7f7f7f;
+    background-color: #222;
   }
   .header__up__logo--white {
     background-color: #7f7f7f;
@@ -628,10 +644,10 @@ footer {
     border: 0.1vw solid #fff;
   }
   .modal__contents__card {
-    background-color: #7f7f7f;
+    background-color: #222;
   }
   .modal__contents__card__row--btn {
-    background-color: #222;
+    background-color: #7f7f7f;
   }
   .accounts__contents {
     background-color: #222;

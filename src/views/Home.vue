@@ -1,5 +1,5 @@
 <template>
-  <section class="home">
+  <section>
     <Header></Header>
     <div class="home__contents">
       <div class="home__contents__left" v-html="title"></div>
