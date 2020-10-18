@@ -3,7 +3,7 @@
     <Header></Header>
     <h1 class="title">accounts</h1>
     <div class="accounts__contents">
-      <a class="twitter-timeline" data-lang="ja" data-width="50vw" data-height="35vw" data-theme="dark" href="https://twitter.com/iczo32">Tweets by TwitterDev</a>
+      <a class="twitter-timeline" data-lang="ja" data-width="35vw" data-height="30vw" data-theme="dark" href="https://twitter.com/iczo32">Tweets by TwitterDev</a>
       <div class="accounts__contents__list">
         <a href="https://twitter.com/iczo32"><div class="accounts__contents__list__links twitter"><span class="fab fa-twitter"></span>twitter account</div></a>
         <a href="https://qiita.com/iczo32"><div class="accounts__contents__list__links qiita">Qiita account</div></a>
