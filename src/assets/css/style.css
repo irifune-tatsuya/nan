@@ -582,6 +582,183 @@ footer {
   margin: auto 20px;
 }
 
+.bbs {
+  position: relative;
+  margin-top: 5vw;
+}
+
+.bbs__contents {
+  min-height: 84.5vh;
+  width: 67vw;
+  margin: 0 auto;
+  padding-top: 8vw;
+}
+
+.bbs__contents__form__content {
+  border-bottom: 2px solid #bbb;
+  padding: 4px 8px;
+  position: relative;
+  margin-top: 3vw;
+  min-width: 210px;
+}
+
+.bbs__contents__form__content::before {
+  content: "";
+  height: 5px;
+  width: 2px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: #bbb;
+}
+
+.bbs__contents__form__content::after {
+  content: "";
+  height: 5px;
+  width: 2px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background-color: #bbb;
+}
+
+.short-box {
+  width: 50%;
+}
+
+.bbs__contents__form__content input {
+  position: relative;
+  border: none;
+  border-image-width: 0;
+  outline: none;
+  margin: 0;
+  z-index: 1;
+  background-color: transparent;
+  width: 100%;
+  display: block;
+  font-size: 14px;
+  padding: 3px;
+}
+
+.bbs__contents__form__content label {
+  width: 100%;
+  padding-bottom: 2px;
+  position: absolute;
+  top: -1.5vw;
+  left: 11px;
+  color: crimson;
+  font-size: 0.8rem;
+}
+
+.bbs__contents__form__content span {
+  position: absolute;
+  left: 11px;
+  bottom: 8px;
+  font-weight: normal;
+  opacity: 0.99;
+  color: #7f7f7f;
+  font-size: 0.8rem;
+}
+
+.input-enter-active, .input-move {
+  transition: opacity .5s, transform 1s;
+}
+
+.input-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.bbs__contents__form__content textarea {
+  border: none;
+  width: 100%;
+  outline: none;
+  margin: 0;
+  border-radius: 0;
+  overflow: hidden;
+  border-image-width: 0;
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
+  display: block;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.bbs__contents__form__btn {
+  margin-top: 20px;
+}
+
+.bbs__contents__form__btn input {
+  width: 10vw;
+  min-width: 72px;
+  height: 3vw;
+  min-height: 30px;
+  border: none;
+  outline: none;
+  background: none;
+  border: 2px solid #777;
+  cursor: pointer;
+}
+
+.bbs__contents__form__btn button {
+  width: 10vw;
+  min-width: 72px;
+  height: 3vw;
+  min-height: 30px;
+  border: none;
+  outline: none;
+  background: none;
+  border: 2px solid #777;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.bbs__contents__list {
+  padding: 80px 0;
+}
+
+.bbs__contents__list--hige {
+  height: 6vw;
+  max-height: 90px;
+  width: auto;
+  max-width: 150px;
+  background-image: url("../../assets/img/hige.png");
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+}
+
+.bbs__contents__list__comment {
+  margin-top: 20px;
+}
+
+.bbs__contents__list__comment__main {
+  background-color: #fff;
+  border: 2px solid #7f7f7f;
+  border-radius: 5px;
+  padding: 16px;
+  box-shadow: 4px 4px #7f7f7f;
+}
+
+.bbs__contents__list__comment__main--name {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.bbs__contents__list__comment__main--comments {
+  margin: 16px 0;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.bbs__contents__list__comment__main--createat {
+  color: #7f7f7f;
+  font-size: 0.8rem;
+  text-align: end;
+}
+
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #222;
@@ -673,6 +850,23 @@ footer {
   }
   .accounts__contents__list__message--img {
     background-image: url("../../assets/img/dog_wh.png");
+  }
+  .bbs__contents__list--hige {
+    background-image: url("../../assets/img/hige_wh.png");
+  }
+  .bbs__contents__form__content input,textarea {
+    color: #fff;
+  }
+  .bbs__contents__form__btn input,button {
+    color: #fff;
+  }
+  .bbs__contents__list__comment__main {
+    background-color: #7f7f7f;
+    color: #fff;
+    box-shadow: 4px 4px #fff;
+  }
+  .bbs__contents__list__comment__main--createat {
+    color: #fff;
   }
   footer {
     background-color: #7f7f7f;
