@@ -29,23 +29,9 @@
             <div class="bbs__contents__list--hige"></div>
             <div class="bbs__contents__list__comment">
               <div class="bbs__contents__list__comment__main">
-                <div class="bbs__contents__list__comment__main--name">いりふね</div>
-                <div class="bbs__contents__list__comment__main--comments">本日はここまでとします‼️UdemyによるVue.js講座は、5%まで進めました。自己紹介ページの方は、明日は、掲示板部分のビューデザインを考えようと思います😍</div>
-                <div class="bbs__contents__list__comment__main--createat">2020/10/20</div>
-              </div>
-            </div>
-            <div class="bbs__contents__list__comment">
-              <div class="bbs__contents__list__comment__main">
-                <div class="bbs__contents__list__comment__main--name">いりふね</div>
-                <div class="bbs__contents__list__comment__main--comments">今日は1日、Vue.jsの学習を進めていました。コンポーネントなどの考え方がまだ十分理解できていません(；´Д｀)<br>今日は1日、Vue.jsの学習を進めていました。コンポーネントなどの考え方がまだ十分理解できていません(；´Д｀)<br>今日は1日、Vue.jsの学習を進めていました。コンポーネントなどの考え方がまだ十分理解できていません(；´Д｀)<br>今日は1日、Vue.jsの学習を進めていました。コンポーネントなどの考え方がまだ十分理解できていません(；´Д｀)<br>今日は1日、Vue.jsの学習を進めていました。コンポーネントなどの考え方がまだ十分理解できていません(；´Д｀)<br>今日は1日、Vue.jsの学習を進めていました。コンポーネントなどの考え方がまだ十分理解できていません(；´Д｀)<br>今日は1日、Vue.jsの学習を進めていました。コンポーネントなどの考え方がまだ十分理解できていません(；´Д｀)<br>今日は1日、Vue.jsの学習を進めていました。コンポーネントなどの考え方がまだ十分理解できていません(；´Д｀)</div>
-                <div class="bbs__contents__list__comment__main--createat">2020/10/20</div>
-              </div>
-            </div>
-            <div class="bbs__contents__list__comment">
-              <div class="bbs__contents__list__comment__main">
-                <div class="bbs__contents__list__comment__main--name">入船</div>
-                <div class="bbs__contents__list__comment__main--comments">今日は1日、Vue.jsの学習を進めていました。コンポーネントなどの考え方がまだ十分理解できていません</div>
-                <div class="bbs__contents__list__comment__main--createat">2020/10/20</div>
+                <div class="bbs__contents__list__comment__main--name">{{ nickName }}</div>
+                <div class="bbs__contents__list__comment__main--comments">{{ comment }}</div>
+                <div class="bbs__contents__list__comment__main--createat">{{ createdAt }}</div>
               </div>
             </div>
           </div>
@@ -58,6 +44,7 @@
 <script>
 import Header from "@/components/Header.vue"
 import Footer from "@/components/Footer.vue"
+import firestore from "@/firebase/firestore.js"
 
 export default {
   name: 'Bbs',
@@ -70,7 +57,11 @@ export default {
       inputSpan: true,
       inputLabel: false,
       textSpan: true,
-      textLabel:false
+      textLabel: false,
+      nickName: "",
+      comment: "",
+      createdAt: "",
+      posts: []
     }
   },
   methods: {
@@ -100,6 +91,18 @@ export default {
         this.textLabel = true;
       }
     }
+  },
+  created() {
+    const docRef = firestore.collection("posts").doc("h8b1M9e7Gh8bdUeRY5SS");
+    docRef.get()
+    .then(response => {
+      this.nickName = response.data().nickname;
+      this.comment = response.data().comment;
+      this.createdAt = response.data().timeStamp.toDate();
+    })
+    .catch(error => {
+      console.log("Error getting document:", error);
+    });
   }
 }
 </script>
