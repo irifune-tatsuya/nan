@@ -27,11 +27,11 @@
           </form>
           <div class="bbs__contents__list">
             <div class="bbs__contents__list--hige"></div>
-            <div class="bbs__contents__list__comment">
+            <div class="bbs__contents__list__comment" v-for="post in posts" :key="post.id">
               <div class="bbs__contents__list__comment__main">
-                <div class="bbs__contents__list__comment__main--name">{{ nickName }}</div>
-                <div class="bbs__contents__list__comment__main--comments">{{ comment }}</div>
-                <div class="bbs__contents__list__comment__main--createat">{{ createdAt }}</div>
+                <div class="bbs__contents__list__comment__main--name">{{ post.nickname }}</div>
+                <div class="bbs__contents__list__comment__main--comments">{{ post.comment }}</div>
+                <div class="bbs__contents__list__comment__main--createat">{{ post.timeStamp.toDate() }}</div>
               </div>
             </div>
           </div>
@@ -58,9 +58,6 @@ export default {
       inputLabel: false,
       textSpan: true,
       textLabel: false,
-      nickName: "",
-      comment: "",
-      createdAt: "",
       posts: []
     }
   },
@@ -93,12 +90,12 @@ export default {
     }
   },
   created() {
-    const docRef = firestore.collection("posts").doc("h8b1M9e7Gh8bdUeRY5SS");
+    const docRef = firestore.collection("posts");
     docRef.get()
     .then(response => {
-      this.nickName = response.data().nickname;
-      this.comment = response.data().comment;
-      this.createdAt = response.data().timeStamp.toDate();
+      response.forEach((doc) => {
+        this.posts.push(doc.data());
+      });
     })
     .catch(error => {
       console.log("Error getting document:", error);

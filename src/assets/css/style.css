@@ -701,6 +701,11 @@ footer {
   cursor: pointer;
 }
 
+.bbs__contents__form__btn input:hover {
+  background: #777;
+  color: #fff;
+}
+
 .bbs__contents__form__btn button {
   width: 10vw;
   min-width: 72px;
@@ -712,6 +717,11 @@ footer {
   border: 2px solid #777;
   margin-left: 20px;
   cursor: pointer;
+}
+
+.bbs__contents__form__btn button:hover {
+  background: #777;
+  color: #fff;
 }
 
 .bbs__contents__list {
@@ -751,6 +761,7 @@ footer {
   margin: 16px 0;
   font-size: 1rem;
   line-height: 1.5rem;
+  word-break: break-all;
 }
 
 .bbs__contents__list__comment__main--createat {
