@@ -6,7 +6,7 @@
 <script>
   export default {
     props: ['url'],
-    mounted() {
+    created() {
       let tag_name = 'script'
       let recaptchaScript = document.createElement(tag_name)
       recaptchaScript.setAttribute('src', this.url)

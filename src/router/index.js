@@ -28,7 +28,22 @@ const routes = [
   {
     path: '/bbs',
     name: 'bbs',
-    component: () => import('../views/Bbs.vue')
+    component: () => import('../views/Bbs.vue'),
+    props: true,
+    children: [
+      {
+        path: "post",
+        component: () => import('../components/CommentForm.vue')
+      },
+      {
+        path: "login",
+        component: () => import('../components/Login.vue')
+      },
+      {
+        path: "register",
+        component: () => import('../components/Register.vue')
+      }
+    ]
   },
   {
     path: '/commentary',
