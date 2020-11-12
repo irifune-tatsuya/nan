@@ -7,14 +7,14 @@
         <div class="bbs__contents">
           <form class="bbs__contents__form">
             <div class="bbs__contents__form__content short-box">
-              <input type="text" name="name" id="name" @click="clickInput" @blur="checkInput()">
+              <input type="text" name="name" id="name" @click="clickInput" @blur="checkInput" v-model="nickname">
               <transition name="input">
                 <label for="name" v-if="inputLabel">Your name</label>
                 <span v-if="inputSpan">Your name</span>
               </transition>
             </div>
             <div class="bbs__contents__form__content">
-              <textarea name="comments" id="comments" rows="1"  @click="clickText" @blur="checkText()"></textarea>
+              <textarea name="comments" id="comments" rows="1"  @click="clickText" @blur="checkText" v-model="comment"></textarea>
               <transition name="input">
                 <label for="comments" v-if="textLabel">Comments</label>
                 <span v-if="textSpan">Comments</span>
@@ -22,12 +22,12 @@
             </div>
             <div class="bbs__contents__form__btn">
               <input type="reset" value="Clear">
-              <button type="submit">Send</button>
+              <button @click.prevent="postComment()">Send</button>
             </div>
           </form>
           <div class="bbs__contents__list">
             <div class="bbs__contents__list--hige"></div>
-            <div class="bbs__contents__list__comment" v-for="post in posts" :key="post.id">
+            <div class="bbs__contents__list__comment" v-for="post in posts" :key="post.comment">
               <div class="bbs__contents__list__comment__main">
                 <div class="bbs__contents__list__comment__main--name">{{ post.nickname }}</div>
                 <div class="bbs__contents__list__comment__main--comments">{{ post.comment }}</div>
@@ -42,9 +42,9 @@
   </div>
 </template>
 <script>
-import Header from "@/components/Header.vue"
-import Footer from "@/components/Footer.vue"
-import firestore from "@/firebase/firestore.js"
+import Header from "@/components/Header.vue";
+import Footer from "@/components/Footer.vue";
+import firestore from '@/firebase/firestore.js';
 
 export default {
   name: 'Bbs',
@@ -58,6 +58,8 @@ export default {
       inputLabel: false,
       textSpan: true,
       textLabel: false,
+      nickname: "",
+      comment: "",
       posts: []
     }
   },
@@ -87,6 +89,20 @@ export default {
         this.textSpan = false;
         this.textLabel = true;
       }
+    },
+    postComment() {
+      var now = new Date();
+      firestore.collection("posts").add({
+        comment: this.comment.trim(),
+        nickname: this.nickname.trim(),
+        timeStamp: now
+      })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log("Error getting document:", error);
+      });
     }
   },
   created() {
