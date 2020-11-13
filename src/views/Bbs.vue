@@ -25,7 +25,7 @@
 <script>
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
-import firestore from '@/firebase/firestore.js';
+import firebaseApp from '@/firebase/firebase.js';
 
 export default {
   name: 'Bbs',
@@ -39,8 +39,8 @@ export default {
     }
   },
   created() {
-    const docRef = firestore.collection("posts");
-    docRef.get()
+    const docRef = firebaseApp.firestore().collection("posts");
+    docRef.orderBy("timeStamp","desc").limit(5).get()
     .then(response => {
       response.forEach((doc) => {
         this.posts.push(doc.data());

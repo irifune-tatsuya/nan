@@ -16,13 +16,15 @@
       </transition>
     </div>
     <div class="bbs__contents__form__btn">
-      <button @click.prevent="">Register</button>
+      <button @click.prevent="createUser">Register</button>
     </div>
   </div>
 </template>
 
 <script>
 import formTransition from "@/mixin/formTransition.js";
+import firebaseApp from "@/firebase/firebase.js";
+import router from '../router/index.js';
 
 export default {
   mixins:[formTransition],
@@ -30,6 +32,23 @@ export default {
     return {
       email: "",
       password: ""
+    }
+  },
+  methods: {
+    createUser() {
+      firebaseApp.auth().createUserWithEmailAndPassword(
+        this.email,
+        this.password
+      )
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error.message);
+      })
+      this.email = "";
+      this.password = "";
+      router.push("/bbs/post");
     }
   }
 }

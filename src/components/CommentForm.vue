@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import firestore from '@/firebase/firestore.js';
+import firebaseApp from '@/firebase/firebase.js';
 import formTransition from "@/mixin/formTransition.js";
 
 export default {
@@ -36,7 +36,7 @@ export default {
   methods: {
     postComment() {
       var now = new Date();
-      firestore.collection("posts").add({
+      firebaseApp.firestore().collection("posts").add({
         comment: this.comment.trim(),
         nickname: this.nickname.trim(),
         timeStamp: now
@@ -47,6 +47,8 @@ export default {
       .catch(error => {
         console.log("Error getting document:", error);
       });
+      this.nickname = "";
+      this.comment = "";
     }
   }
 }
