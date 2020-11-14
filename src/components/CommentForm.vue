@@ -17,6 +17,7 @@
     <div class="bbs__contents__form__btn">
       <input type="reset" value="Clear">
       <button @click.prevent="postComment()">Send</button>
+      <button @click.prevent="logOutUser()">LogOut</button>
     </div>
   </div>
 </template>
@@ -24,6 +25,7 @@
 <script>
 import firebaseApp from '@/firebase/firebase.js';
 import formTransition from "@/mixin/formTransition.js";
+import router from '@/router/index.js';
 
 export default {
   mixins:[formTransition],
@@ -49,6 +51,11 @@ export default {
       });
       this.nickname = "";
       this.comment = "";
+    },
+    logOutUser() {
+      firebaseApp.auth().signOut();
+      alert('ログアウトしました。');
+      router.push('/bbs/login');
     }
   }
 }

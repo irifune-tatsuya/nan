@@ -17,6 +17,7 @@
     </div>
     <div class="bbs__contents__form__btn">
       <button @click.prevent="createUser">Register</button>
+      <router-link to="/bbs/login"><button>Go Login Page</button></router-link>
     </div>
   </div>
 </template>

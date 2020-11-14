@@ -14,4 +14,13 @@ const config = {
 
 const firebaseApp = Firebase.initializeApp(config);
 
+firebaseApp.getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = firebaseApp.auth().onAuthStateChanged(user => {
+      unsubscribe()
+      resolve(user);
+    }, reject);
+  });
+};
+
 export default firebaseApp

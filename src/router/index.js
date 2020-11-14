@@ -1,6 +1,16 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Profile from '../views/Profile.vue'
+import Career from '../views/Career.vue'
+import Accounts from '../views/Accounts.vue'
+import Bbs from '../views/Bbs.vue'
+import Commentary from '../views/Commentary.vue'
+import CommentForm from '../components/CommentForm.vue'
+import CommentList from '../components/CommentList.vue'
+import Login from '../components/Login.vue'
+import Register from '../components/Register.vue'
+import firebaseApp from "@/firebase/firebase.js"
 
 Vue.use(VueRouter)
 
@@ -13,42 +23,46 @@ const routes = [
   {
     path: '/profile',
     name: 'profile',
-    component: () => import('../views/Profile.vue')
+    component: Profile
   },
   {
     path: '/career',
     name: 'career',
-    component: () => import('../views/Career.vue')
+    component: Career
   },
   {
     path: '/accounts',
     name: 'accounts',
-    component: () => import('../views/Accounts.vue')
+    component: Accounts
   },
   {
     path: '/bbs',
     name: 'bbs',
-    component: () => import('../views/Bbs.vue'),
+    component: Bbs,
     props: true,
     children: [
       {
         path: "post",
-        component: () => import('../components/CommentForm.vue')
+        components: {
+          default: CommentForm,
+          CommentList
+        },
+        meta: { requiresAuth: true }
       },
       {
         path: "login",
-        component: () => import('../components/Login.vue')
+        component: Login
       },
       {
         path: "register",
-        component: () => import('../components/Register.vue')
+        component: Register
       }
     ]
   },
   {
     path: '/commentary',
     name: 'commentary',
-    component: () => import('../views/Commentary.vue')
+    component: Commentary
   }
 ]
 
@@ -56,5 +70,14 @@ const router = new VueRouter({
   mode: 'history',
   routes
 })
+
+router.beforeEach(async (to, from, next) => {
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+  if (requiresAuth && !(await firebaseApp.getCurrentUser())) {
+    next({ path: '/bbs/login', query: {redirect: to.fullPath}});
+  } else {
+    next();
+  }
+});
 
 export default router

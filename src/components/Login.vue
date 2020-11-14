@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>書き込みをするためには、ログインが必要となります。</p>
+    <p>掲示板を利用するためには、ログインが必要となります。</p>
     <div class="bbs__contents__form__content short-box flexbox">
       <input type="email" id="email" @click="clickInput" @blur="checkInput('email')" v-model="email">
       <transition name="input">
@@ -17,6 +17,7 @@
     </div>
     <div class="bbs__contents__form__btn">
       <button @click.prevent="loginUser">Login</button>
+      <router-link to="/bbs/register"><button>Account Create</button></router-link>
     </div>
   </div>
 </template>
@@ -40,15 +41,15 @@ export default {
         this.email,
         this.password
       )
-      .then(response => {
-        console.log(response);
+      .then(() => {
+        router.push('/bbs/post');
       })
       .catch(error => {
+        alert("ログインに失敗しました。");
         console.log(error.message);
       })
       this.email = "";
       this.password = "";
-      router.push("/bbs/post");
     }
   }
 }
