@@ -13,8 +13,14 @@ const config = {
 }
 
 const firebaseApp = Firebase.initializeApp(config);
-firebaseApp.analytics();
-const firestore = firebaseApp.firestore();
-firestore.settings({ timestampsInSnapshots: true });
 
-export default firestore
+firebaseApp.getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = firebaseApp.auth().onAuthStateChanged(user => {
+      unsubscribe()
+      resolve(user);
+    }, reject);
+  });
+};
+
+export default firebaseApp
