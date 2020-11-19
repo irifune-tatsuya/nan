@@ -24,6 +24,7 @@
 
 <script>
 import firebaseApp from '@/firebase/firebase.js';
+import db from '@/firebase/vuefire.js';
 import formTransition from "@/mixin/formTransition.js";
 import router from '@/router/index.js';
 
@@ -38,7 +39,7 @@ export default {
   methods: {
     postComment() {
       var now = new Date();
-      firebaseApp.firestore().collection("posts").add({
+      db.collection("posts").add({
         comment: this.comment.trim(),
         nickname: this.nickname.trim(),
         timeStamp: now
@@ -54,7 +55,7 @@ export default {
     },
     logOutUser() {
       firebaseApp.auth().signOut();
-      alert('ログアウトしました。');
+      alert('ログアウトしました');
       router.push('/bbs/login');
     }
   }
