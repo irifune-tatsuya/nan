@@ -1,7 +1,6 @@
 <template>
   <div class="bbs__contents__list">
     <div class="bbs__contents__list--hige"></div>
-    <pre>{{posts}}</pre>
     <div class="bbs__contents__list__comment" v-for="post in posts" :key="post.id" :id="post.id">
       <div class="bbs__contents__list__comment__main">
         <div class="bbs__contents__list__comment__main--name">{{ post.nickname }}</div>
@@ -26,9 +25,9 @@ export default {
       posts: [],
     }
   },
-  firestore: {
-    posts: db.collection('posts'),
-  },
+  firestore: ()=> ({
+    posts: db.collection('posts')
+  }),
   // created() {
   //   db.collection('posts').orderBy("timeStamp","desc").onSnapshot(response => {
   //     var i = 0;
