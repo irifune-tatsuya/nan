@@ -764,10 +764,21 @@ footer {
   word-break: break-all;
 }
 
-.bbs__contents__list__comment__main--createat {
+.bbs__contents__list__comment__main__rower {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   color: #7f7f7f;
   font-size: 0.8rem;
-  text-align: end;
+}
+
+.bbs__contents__list__comment__main__rower--trash {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.bbs__contents__list__comment__main__rower--trash:hover {
+  color: #222;
 }
 
 @media (prefers-color-scheme: dark) {
